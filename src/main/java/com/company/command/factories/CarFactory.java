@@ -13,12 +13,20 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
+/**
+ * Factory pattern implementation for Car instances
+ */
 @Component
 public class CarFactory implements VehicleFactory {
     ModelFactory modelFactory;
     private EngineFactory engineFactory;
     private TransmissionFactory transmissionFactory;
 
+    /**
+     * @param engineFactory engine factory used for getting the right {@link Engine} instance
+     * @param modelFactory model factory used for getting the right{@link VehicleModel} instance
+     * @param transmissionFactory transmission factory used for getting the right {@link Transmission} instance
+     */
     public CarFactory(EngineFactory engineFactory, ModelFactory modelFactory, TransmissionFactory transmissionFactory) {
         this.transmissionFactory = transmissionFactory;
         this.engineFactory = engineFactory;

@@ -7,6 +7,9 @@ import com.company.components.model.ModelFactory;
 import com.company.components.transmission.TransmissionFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * Factory pattern implementation for SuvVehicle instances
+ */
 @Component
 public class SuvFactory extends CarFactory {
     public SuvFactory(EngineFactory engineFactory, ModelFactory modelFactory, TransmissionFactory transmissionFactory) {
