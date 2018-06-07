@@ -5,6 +5,7 @@ import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.emission.standards.EuroEmissionStandard;
 import com.company.components.engine.parsers.DisplacementEngineSpecificationsParser;
 import com.company.components.engine.parsers.EngineParseException;
+import com.company.components.engine.parsers.EngineTypeEngineSpecificationsParser;
 import com.company.components.engine.parsers.HorsepowerEngineSpecificationsParser;
 import com.company.components.engine.turbo.BasicTurbo;
 import org.junit.Assert;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 
 public class EngineFactoryTest {
     private EngineFactory factory;
-
+    private final static int DELTA=1;
     @Before
     public void init() {
         EngineFactoryBuilder factoryBuilder = new EngineFactoryBuilder();
@@ -30,6 +31,7 @@ public class EngineFactoryTest {
                 new PetrolEngineSpecifications(1000, 50),
                 new PetrolEngineSpecifications(2000, 100, BasicTurbo.getInstance()), new ElectricEngineSpecification(300)));
         factoryBuilder.setParsers(Arrays.asList(new DisplacementEngineSpecificationsParser("L"),
+                new EngineTypeEngineSpecificationsParser(),
                 new HorsepowerEngineSpecificationsParser("hp", 1)));
         factory = factoryBuilder.createEngineFactory();
     }
@@ -37,7 +39,7 @@ public class EngineFactoryTest {
     @Test
     public void testGetPetrolEngineByHorsepowerPreservesKw() {
         Engine engine = factory.getEngine("B-134hpT");
-        Assert.assertEquals(100, engine.getKwPower());
+        Assert.assertEquals(100, engine.getKwPower(),DELTA);
     }
 
     @Test
@@ -73,7 +75,7 @@ public class EngineFactoryTest {
 
     @Test
     public void testNoSpecificPowerRequiredGetsLowestPowerEngineSupported() {
-        Assert.assertEquals(50, factory.getEngine("B").getKwPower());
+        Assert.assertEquals(50, factory.getEngine("B").getKwPower(),DELTA);
     }
 
 
@@ -84,7 +86,7 @@ public class EngineFactoryTest {
 
     @Test
     public void testGetByDisplacementWorksWell() {
-        Assert.assertEquals(50, factory.getEngine("B-1L").getKwPower());
+        Assert.assertEquals(50, factory.getEngine("B-1L").getKwPower(),DELTA);
     }
 
     @Test
@@ -103,8 +105,8 @@ public class EngineFactoryTest {
     }
 
     @Test
-    public void testGetElectricalEngineHorsepowers() {
-        Assert.assertEquals(300, factory.getEngine("E").getKwPower());
+    public void testGetElectricalEngineHorsepower() {
+        Assert.assertEquals(300, factory.getEngine("E").getKwPower(),DELTA);
     }
 
     @Test

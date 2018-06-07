@@ -7,7 +7,7 @@ public abstract class InternalCombustionEngineSpecifications extends EngineSpeci
     private int displacement;
     private Turbo turbo;
 
-    InternalCombustionEngineSpecifications(int displacement, int kw, Turbo turbo) {
+    InternalCombustionEngineSpecifications(int displacement, double kw, Turbo turbo) {
         super(kw);
         this.turbo = turbo;
         setDisplacement(displacement);

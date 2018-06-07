@@ -27,22 +27,17 @@ public class EmissionStandardFactory {
         if (emissionStandardName.equals("")) {
             return emissionStandardList.get(0);
         }
-        String[] splitProperties = emissionStandardName.split("-");
         for (EmissionStandard standard : emissionStandardList
                 ) {
-            for (int i = 1; i < splitProperties.length; i++) {
-
-                if (splitProperties[i].contains(standard.getName())) {
+                if (emissionStandardName.equals(standard.getName())) {
                     return standard;
                 }
             }
-        }
 
         throw new UnsupportedEmissionStandardException();
     }
 
     public EmissionStandard getHighestStandard() {
-        System.out.println(emissionStandardList.get(emissionStandardList.size() - 1).getName());
         return emissionStandardList.get(emissionStandardList.size() - 1);
     }
 }

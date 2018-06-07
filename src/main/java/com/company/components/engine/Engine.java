@@ -53,7 +53,7 @@ public class Engine {
     /**
      * @return The kilowatt power of the engine
      */
-    public int getKwPower() {
+    public double getKwPower() {
 
         return engineSpecifications.getKwPower();
     }
@@ -64,8 +64,8 @@ public class Engine {
      */
     public String getInfo() {
         return engineSpecifications.getTurboId() != null ?
-                String.join("-", engineSpecifications.getTypeId(), getHorsepowerString(),
-                        engineSpecifications.getTurboId(), getEmissionStandard()) :
+                String.join("-", engineSpecifications.getTypeId(),
+                        getHorsepowerString()+ engineSpecifications.getTurboId(), getEmissionStandard()) :
                 String.join("-", engineSpecifications.getTypeId(), getHorsepowerString(), getEmissionStandard());
     }
 

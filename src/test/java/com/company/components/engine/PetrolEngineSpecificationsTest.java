@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class PetrolEngineSpecificationsTest {
+    private final static int DELTA=1;
     private EngineSpecifications petrolEngineSpecs =new PetrolEngineSpecifications(2000,100);
     @Test
     public void testGetDisplacement(){
@@ -19,7 +20,7 @@ public class PetrolEngineSpecificationsTest {
 
     @Test
     public void testGetKwPower(){
-        Assert.assertEquals(100, petrolEngineSpecs.getKwPower());
+        Assert.assertEquals(100, petrolEngineSpecs.getKwPower(),DELTA);
     }
 
     @Test

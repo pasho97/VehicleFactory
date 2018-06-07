@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 public abstract class EngineSpecifications implements Cloneable {
     private final static double KILOWATT_TO_HORSEPOWER = 1.34102209;
     private final static Logger LOGGER = Logger.getLogger(EngineSpecifications.class.getName());
-    int kwPower;
+    double kwPower;
 
-    EngineSpecifications(int kw) {
+    EngineSpecifications(double kw) {
         setKwPower(kw);
     }
 
@@ -40,11 +40,11 @@ public abstract class EngineSpecifications implements Cloneable {
     /**
      * @return The kilowatt power specification of the engine
      */
-    public int getKwPower() {
+    public double getKwPower() {
         return kwPower;
     }
 
-    private void setKwPower(int kw) {
+    private void setKwPower(double kw) {
         this.kwPower = kw;
     }
 

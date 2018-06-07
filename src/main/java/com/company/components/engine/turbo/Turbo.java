@@ -12,13 +12,13 @@ public interface Turbo {
      * @return The power increase an engine with the given kilowatts power and no turbo would get
      * if added this type of turbo
      */
-    int getPowerIncreaseIfMounted(int kwPower);
+    double getPowerIncreaseIfMounted(double kwPower);
 
     /**
      * @param kwPower The current kilowatts power of the engine
      * @return The power decrease dismounting this turbo from an engine with the given kilowatts would lead to
      */
-    int getPowerDecreaseIfDismounted(int kwPower);
+    double getPowerDecreaseIfDismounted(double kwPower);
 
 
     /**

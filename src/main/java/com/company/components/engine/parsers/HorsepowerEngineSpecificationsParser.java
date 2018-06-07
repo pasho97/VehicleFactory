@@ -2,7 +2,7 @@ package com.company.components.engine.parsers;
 
 import com.company.components.engine.EngineSpecifications;
 
-public class HorsepowerEngineSpecificationsParser extends EngineSpecificationsParser {
+public class HorsepowerEngineSpecificationsParser extends EngineSpecificationsPowerValueParser {
     private final int allowedDifference;
 
     public HorsepowerEngineSpecificationsParser(String identificator, int allowedDifference) {

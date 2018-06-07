@@ -10,7 +10,6 @@ import java.util.Arrays;
 
 public class EmissionStandardFactoryTest {
     private final EmissionStandardFactory factory=new EmissionStandardFactory(Arrays.asList(new EuroEmissionStandard(1),
-            new EuroEmissionStandard(2),
             new EuroEmissionStandard(3),
             new EuroEmissionStandard(4),
             new EuroEmissionStandard(5),
@@ -18,7 +17,7 @@ public class EmissionStandardFactoryTest {
 
     @Test
     public void testGetStandardInstance(){
-        Assert.assertEquals("euro3",factory.getStandardInstance("B-147hp-euro3").getName());
+        Assert.assertEquals("euro3",factory.getStandardInstance("euro3").getName());
     }
 
     @Test(expected = UnsupportedEmissionStandardException.class)

@@ -23,6 +23,6 @@ public class ElectricEngineSpecificationsTest {
 
     @Test
     public void testGetKwPower(){
-        Assert.assertEquals(100, electricEngineSpecs.getKwPower());
+        Assert.assertEquals(100, electricEngineSpecs.getKwPower(),1);
     }
 }

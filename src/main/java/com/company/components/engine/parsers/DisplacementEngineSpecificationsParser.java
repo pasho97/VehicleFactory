@@ -3,7 +3,7 @@ package com.company.components.engine.parsers;
 import com.company.components.engine.EngineSpecifications;
 
 
-public class DisplacementEngineSpecificationsParser extends EngineSpecificationsParser {
+public class DisplacementEngineSpecificationsParser extends EngineSpecificationsPowerValueParser {
 
     public DisplacementEngineSpecificationsParser(String id) {
         super(id);

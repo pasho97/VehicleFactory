@@ -9,7 +9,8 @@ import org.junit.Test;
 import java.util.Collections;
 
 public class HorsepowerEngineSpecificationsParserTest {
-    private final EngineSpecificationsParser parser = new HorsepowerEngineSpecificationsParser("hp", 1);
+    private final EngineSpecificationsPowerValueParser parser = new HorsepowerEngineSpecificationsParser("hp", 1);
+    private static final int DELTA=1;
 
     @Test
     public void testHaveRequestedPower() {
@@ -43,7 +44,8 @@ public class HorsepowerEngineSpecificationsParserTest {
     @Test
     public void testParse() {
         EngineSpecifications specs = new PetrolEngineSpecifications(2000, 100);
-        Assert.assertEquals(specs.getKwPower(), parser.parse("B-134hp", Collections.singletonList(specs)).getKwPower());
+        Assert.assertEquals(specs.getKwPower(),
+                parser.parse("B-134hp", Collections.singletonList(specs)).getKwPower(),DELTA);
     }
 
     @Test

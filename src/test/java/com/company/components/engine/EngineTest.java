@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class EngineTest {
     private Engine engine;
-
+    private static final int DELTA=1;
     @Before
     public void init() {
         engine = new Engine(new DieselEngineSpecifications(2000, 100, BasicTurbo.getInstance()), new EuroEmissionStandard(4));
@@ -34,14 +34,14 @@ public class EngineTest {
     public void testMountTurbo() {
         engine = new Engine(new DieselEngineSpecifications(2000, 100), new EuroEmissionStandard(3));
         engine.mountTurbo(BasicTurbo.getInstance());
-        Assert.assertEquals(130, engine.getKwPower());
+        Assert.assertEquals(130, engine.getKwPower(),DELTA);
     }
 
     @Test
     public void testMountTurboNull() {
         engine = new Engine(new DieselEngineSpecifications(2000, 100), new EuroEmissionStandard(3));
         engine.mountTurbo(null);
-        Assert.assertEquals(100, engine.getKwPower());
+        Assert.assertEquals(100, engine.getKwPower(),DELTA);
     }
 
     @Test(expected = UnsupportedOperationException.class)

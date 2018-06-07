@@ -7,6 +7,7 @@ import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.emission.standards.EuroEmissionStandard;
 import com.company.components.engine.parsers.DisplacementEngineSpecificationsParser;
 import com.company.components.engine.parsers.EngineParseException;
+import com.company.components.engine.parsers.EngineTypeEngineSpecificationsParser;
 import com.company.components.engine.parsers.HorsepowerEngineSpecificationsParser;
 import com.company.components.engine.turbo.BasicTurbo;
 import com.company.components.model.*;
@@ -36,6 +37,7 @@ public class CarFactoryTest {
                 new PetrolEngineSpecifications(1000, 50),
                 new PetrolEngineSpecifications(2000, 100, BasicTurbo.getInstance()), new ElectricEngineSpecification(300)));
         factoryBuilder.setParsers(Arrays.asList(new DisplacementEngineSpecificationsParser("L"),
+                new EngineTypeEngineSpecificationsParser(),
                 new HorsepowerEngineSpecificationsParser("hp", 1)));
         EngineFactory engineFactory = factoryBuilder.createEngineFactory();
 

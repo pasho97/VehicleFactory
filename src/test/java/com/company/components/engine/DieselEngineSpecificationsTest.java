@@ -20,7 +20,7 @@ public class DieselEngineSpecificationsTest {
 
     @Test
     public void testGetKwPower(){
-        Assert.assertEquals(100,dieselEngineSpecs.getKwPower());
+        Assert.assertEquals(100,dieselEngineSpecs.getKwPower(),1);
     }
 
     @Test(expected = IllegalArgumentException.class)

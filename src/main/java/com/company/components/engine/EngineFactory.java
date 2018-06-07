@@ -35,7 +35,7 @@ public class EngineFactory {
             }
             enginesByType.get(x.getTypeId()).add(x);
         });
-        enginesByType.forEach((x, y) -> y.sort(Comparator.comparingInt(EngineSpecifications::getKwPower)));
+        enginesByType.forEach((x, y) -> y.sort(Comparator.comparingDouble(EngineSpecifications::getKwPower)));
 
     }
 
@@ -51,27 +51,24 @@ public class EngineFactory {
         }
         List<EngineSpecifications> engineSpecificationsList = enginesByType.get(splitProperties[0]);
 
-        if (splitProperties.length == 1) {
-            EngineSpecifications engineSpecifications = engineSpecificationsList.get(0);
-            EmissionStandard emissionStandard;
-            if (engineSpecifications.getTypeId().equals("E")) {
-                emissionStandard = emissionStandardFactory.getHighestStandard();
-            } else {
-                emissionStandard = emissionStandardFactory.getStandardInstance("");
-            }
-
-            return new Engine(engineSpecifications, emissionStandard);
-        }
-
-
         for (EngineSpecificationsParser parser : parsers
                 ) {
             if (parser.canParse(properties)) {
                 EngineSpecifications result = parser.parse(properties, engineSpecificationsList);
-                EmissionStandard emissionStandard;
-                try {
-                    emissionStandard = emissionStandardFactory.getStandardInstance(properties);
-                } catch (IllegalArgumentException e) {
+                EmissionStandard emissionStandard = null;
+
+                if (result.getTypeId().equals("E")) {
+                    emissionStandard = emissionStandardFactory.getHighestStandard();
+                }
+                if (splitProperties.length == 3) {
+                    if (emissionStandard != null && !emissionStandard.getName().equals(
+                            emissionStandardFactory.getStandardInstance(splitProperties[2]).getName())) {
+                        throw new IllegalArgumentException("Electrical engines should " +
+                                "have highest possible emission standard");
+                    }
+
+                    emissionStandard = emissionStandardFactory.getStandardInstance(splitProperties[2]);
+                } else if(!result.getTypeId().equals("E")){
                     emissionStandard = emissionStandardFactory.getStandardInstance("");
                 }
 
