@@ -7,18 +7,17 @@ import java.util.logging.Logger;
 /**
  * Abstract class representing engine specifications such as kilowatt power , engine type , turbo and displacement
  */
-public abstract class EngineSpecifications implements Cloneable{
+public abstract class EngineSpecifications implements Cloneable {
     private final static double KILOWATT_TO_HORSEPOWER = 1.34102209;
     private final static Logger LOGGER = Logger.getLogger(EngineSpecifications.class.getName());
-    private int displacement;
-    private int kwPower;
-    private Turbo turbo;
+    int kwPower;
 
-    EngineSpecifications(int displacement, int kw, Turbo turbo) {
-        setDisplacement(displacement);
+    EngineSpecifications(int kw) {
         setKwPower(kw);
-        this.turbo = turbo;
     }
+
+    public abstract String getTurboId();
+
 
     /**
      * @return The horsepower of the engine
@@ -27,28 +26,6 @@ public abstract class EngineSpecifications implements Cloneable{
         return (int) (kwPower * KILOWATT_TO_HORSEPOWER);
     }
 
-    /**
-     * @return True if the engine specification has turbo , false otherwise
-     */
-    public boolean hasTurbo() {
-        return turbo != null;
-    }
-
-    public void mountTurbo(Turbo turbo) {
-        if (turbo != null) {
-            if (!this.getTurboId().equals(turbo.getTypeId())) {
-                this.turbo = turbo;
-            }
-            kwPower += turbo.getPowerIncreaseIfMounted(kwPower);
-        }
-    }
-
-    public String getTurboId() {
-        if (turbo == null) {
-            return "";
-        }
-        return turbo.getTypeId();
-    }
 
     /**
      * @return The typeId specification of the engine
@@ -58,13 +35,7 @@ public abstract class EngineSpecifications implements Cloneable{
     /**
      * @return The displacement specification of the engine , 0 if the engine has no displacement(e.g. Electric engine)
      */
-    public int getDisplacement() {
-        return displacement;
-    }
-
-    void setDisplacement(int engineDisplacement) {
-        this.displacement = engineDisplacement;
-    }
+    public abstract int getDisplacement();
 
     /**
      * @return The kilowatt power specification of the engine
@@ -80,7 +51,10 @@ public abstract class EngineSpecifications implements Cloneable{
     @Override
     protected Object clone() throws CloneNotSupportedException {
 
-            return super.clone();
+        return super.clone();
 
     }
+
+    public abstract void mountTurbo(Turbo turbo);
+
 }

@@ -2,7 +2,7 @@ package com.company.components.engine;
 
 import com.company.components.engine.turbo.Turbo;
 
-public class PetrolEngineSpecifications extends EngineSpecifications {
+public class PetrolEngineSpecifications extends InternalCombustionEngineSpecifications {
     private static final String TYPE_ID = "B";
 
     public PetrolEngineSpecifications(int displacement, int kw, Turbo turbo) {

@@ -2,7 +2,7 @@ package com.company.components.engine;
 
 import com.company.components.engine.turbo.Turbo;
 
-public class DieselEngineSpecifications extends EngineSpecifications {
+public class DieselEngineSpecifications extends InternalCombustionEngineSpecifications {
     private static final int DISPLACEMENT_LOWER_BOUND = 2000;
     private static final int DISPLACEMENT_UPPER_BOUND = 6000;
     private static final String TYPE_ID = "D";
