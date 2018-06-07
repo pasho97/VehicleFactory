@@ -14,7 +14,7 @@ public abstract class EngineSpecificationsParser {
     private final Pattern pattern;
 
     /**
-     * @param enginePowerValueTypeIdentifier - The string the power value will be identified with ( e.g. one possible id for
+     * @param enginePowerValueTypeIdentifier The string the power value will be identified with ( e.g. one possible id for
      *                                       horsepower is hp )
      */
     public EngineSpecificationsParser(String enginePowerValueTypeIdentifier) {
@@ -23,8 +23,8 @@ public abstract class EngineSpecificationsParser {
     }
 
     /**
-     * @param properties - The string containing the engine information
-     * @return - True if the parser can be used to parse this information
+     * @param properties The string containing the engine information
+     * @return True if the parser can be used to parse this information
      */
     public boolean canParse(String properties) {
         return pattern.matcher(properties).find();
@@ -39,9 +39,9 @@ public abstract class EngineSpecificationsParser {
     }
 
     /**
-     * @param specifications      - The engine specifications we want to check if they comply to the requested specifications
-     * @param enginePowerProperty - The requested specifications as string
-     * @return - True if specifications have the same power requested by enginePowerProperty
+     * @param specifications       The engine specifications we want to check if they comply to the requested specifications
+     * @param enginePowerProperty  The requested specifications as string
+     * @return True if specifications have the same power requested by enginePowerProperty
      */
     abstract boolean haveRequestedPower(EngineSpecifications specifications, String enginePowerProperty);
 
@@ -51,10 +51,10 @@ public abstract class EngineSpecificationsParser {
     }
 
     /**
-     * @param properties               - The properties to be parsed
-     * @param engineSpecificationsList - List with engine specifications
-     * @return - The result engine specifications if parse was successful , null if parser cannot parse these properties
-     * @throws EngineParseException - if no engine specifications matching the given properties were found
+     * @param properties                The properties to be parsed
+     * @param engineSpecificationsList  List with engine specifications
+     * @return  The result engine specifications if parse was successful , null if parser cannot parse these properties
+     * @throws EngineParseException  if no engine specifications matching the given properties were found
      */
     public EngineSpecifications parse(String properties, List<EngineSpecifications> engineSpecificationsList) {
         Matcher matcher = pattern.matcher(properties);

@@ -14,7 +14,7 @@ public class EngineFactoryBuilder {
     private List<EngineSpecificationsParser> parsers;
 
     /**
-     * @param engineSpecificationsList - List of engine specifications the built Engine factory should support
+     * @param engineSpecificationsList List of engine specifications the built Engine factory should support
      */
     public EngineFactoryBuilder setEngineSpecificationsList(List<EngineSpecifications> engineSpecificationsList) {
         this.engineSpecificationsList = engineSpecificationsList;
@@ -22,7 +22,7 @@ public class EngineFactoryBuilder {
     }
 
     /**
-     * @param emissionStandardFactory - The emission standard factory needed for setting the right emission standard by
+     * @param emissionStandardFactory The emission standard factory needed for setting the right emission standard by
      *                                the factory
      */
     public EngineFactoryBuilder setEmissionStandardFactory(EmissionStandardFactory emissionStandardFactory) {
@@ -31,7 +31,7 @@ public class EngineFactoryBuilder {
     }
 
     /**
-     * @param parsers - The parsers
+     * @param parsers The engine specifications objects parsers
      */
     public EngineFactoryBuilder setParsers(List<EngineSpecificationsParser> parsers) {
         this.parsers = parsers;

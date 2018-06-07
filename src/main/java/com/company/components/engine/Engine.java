@@ -15,8 +15,8 @@ public class Engine {
     private EmissionStandard standard;
 
     /**
-     * @param specifications - Specifications of the required engine - fuel type , turbo , kilowatt power etc
-     * @param standard       - The emission standard the required engine complies to
+     * @param specifications Specifications of the required engine - fuel type , turbo , kilowatt power etc
+     * @param standard       The emission standard the required engine complies to
      */
     Engine(EngineSpecifications specifications, EmissionStandard standard) {
         this.engineSpecifications = specifications;
@@ -24,7 +24,7 @@ public class Engine {
     }
 
     /**
-     * @param turbo - mounts the given turbo to the engine
+     * @param turbo mounts the given turbo to the engine
      * @throws IllegalArgumentException if the engine we try to mount the turbo on cannot have turbo
      */
     public void mountTurbo(Turbo turbo) {

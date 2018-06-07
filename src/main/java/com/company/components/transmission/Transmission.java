@@ -11,7 +11,7 @@ public class Transmission {
      * @param gears gears count of transmission
      * @param type type of transmission
      */
-    Transmission(int gears, TransmissionType type) {
+    public Transmission(int gears, TransmissionType type) {
         this.type = type;
         this.gears = gears;
     }

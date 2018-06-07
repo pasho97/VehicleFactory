@@ -16,8 +16,8 @@ public class ElectricEngineSpecification extends EngineSpecifications {
     }
 
     /**
-     * @param turbo - The turbo we want to mount
-     * @throws IllegalArgumentException - electrical engines cannot have turbo
+     * @param turbo The turbo we want to mount
+     * @throws UnsupportedOperationException electrical engines cannot have turbo
      */
     @Override
     public void mountTurbo(Turbo turbo) {

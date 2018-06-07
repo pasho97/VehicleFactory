@@ -16,7 +16,7 @@ public class TransmissionFactory {
     /**
      * @param transmissions list containing supported transmissions
      */
-    TransmissionFactory(List<Transmission> transmissions) {
+    public TransmissionFactory(List<Transmission> transmissions) {
         if (transmissions.size() == 0) {
             throw new IllegalArgumentException("No transmissions given for the transmission factory");
         }
@@ -35,7 +35,7 @@ public class TransmissionFactory {
     /**
      * @param transmissionString representing the requested transmission
      * @return Transmission instance if such a transmission is supported
-     * @throws IllegalArgumentException if no such transmission is supported
+     * @throws UnsupportedTransmissionException if no such transmission is supported
      */
     public Transmission getTransmission(String transmissionString) {
         if (transmissionString == null) {
@@ -52,7 +52,7 @@ public class TransmissionFactory {
             return transmissionsById.get(transmissionString);
         }
 
-        throw new IllegalArgumentException("Unsupported Transmission");
+        throw new UnsupportedTransmissionException();
 
     }
 
