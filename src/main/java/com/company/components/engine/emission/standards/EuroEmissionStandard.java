@@ -1,4 +1,4 @@
-package com.company.car.engine.emission.standards;
+package com.company.components.engine.emission.standards;
 
 /**
  * Objects of this class represent the euro emission standards

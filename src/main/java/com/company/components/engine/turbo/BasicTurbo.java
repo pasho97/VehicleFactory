@@ -1,4 +1,4 @@
-package com.company.car.engine.turbo;
+package com.company.components.engine.turbo;
 
 import org.springframework.stereotype.Component;
 
@@ -8,16 +8,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class BasicTurbo implements Turbo {
 
+    private static final String id = "T";
+    private static final double PERCENTAGE_INCREASE = 0.30;
     private static Turbo instance;
-    private BasicTurbo(){}
-    public static Turbo getInstance(){
-        if(instance==null){
-            instance=new BasicTurbo();
+
+    private BasicTurbo() {
+    }
+
+    public static Turbo getInstance() {
+        if (instance == null) {
+            instance = new BasicTurbo();
         }
         return instance;
     }
-    private static final String id = "T";
-    private static final double PERCENTAGE_INCREASE = 0.30;
 
     @Override
     public int getPowerIncreaseIfMounted(int kwPower) {

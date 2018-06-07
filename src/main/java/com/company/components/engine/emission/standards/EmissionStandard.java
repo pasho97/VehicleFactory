@@ -1,4 +1,4 @@
-package com.company.car.engine.emission.standards;
+package com.company.components.engine.emission.standards;
 
 /**
  * Classes implementing this interface represent different exhaust emission standards

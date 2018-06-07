@@ -1,4 +1,4 @@
-package com.company.car.engine.turbo;
+package com.company.components.engine.turbo;
 
 /**
  * An object that represents turbos found in automobile engines

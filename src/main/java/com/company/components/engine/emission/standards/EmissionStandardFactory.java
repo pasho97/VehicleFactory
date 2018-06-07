@@ -1,4 +1,4 @@
-package com.company.car.engine.emission.standards;
+package com.company.components.engine.emission.standards;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,5 +39,10 @@ public class EmissionStandardFactory {
         }
 
         throw new IllegalArgumentException("Emission standard is not supported");
+    }
+
+    public EmissionStandard getHighestStandard() {
+        System.out.println(emissionStandardList.get(emissionStandardList.size() - 1).getName());
+        return emissionStandardList.get(emissionStandardList.size() - 1);
     }
 }
