@@ -2,6 +2,7 @@ package com.company.components.engine.emission.standard;
 
 import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.emission.standards.EuroEmissionStandard;
+import com.company.components.engine.emission.standards.UnsupportedEmissionStandardException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class EmissionStandardFactoryTest {
         Assert.assertEquals("euro3",factory.getStandardInstance("B-147hp-euro3").getName());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = UnsupportedEmissionStandardException.class)
     public void testGetInstanceThrowsException(){
         factory.getStandardInstance("euro31");
         Assert.fail();

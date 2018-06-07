@@ -18,14 +18,14 @@ public class EngineFactory {
     private Map<String, List<EngineSpecifications>> enginesByType;
 
     /**
-     * @param engineSpecificationsList - List of engine specifications this factory will support
-     * @param emissionStandardFactory  - emission standard factory needed to set the right emission standard for the
+     * @param engineSpecificationsList List of engine specifications this factory will support
+     * @param emissionStandardFactory  emission standard factory needed to set the right emission standard for the
      *                                 required engine object
-     * @param parsers                  -list of parsers having the different string input parser types the engine can be build from
+     * @param parsers                  list of parsers having the different string input parser types the engine can be build from
      */
     @Autowired
-    EngineFactory(List<EngineSpecifications> engineSpecificationsList, EmissionStandardFactory emissionStandardFactory,
-                  List<EngineSpecificationsParser> parsers) {
+    public EngineFactory(List<EngineSpecifications> engineSpecificationsList, EmissionStandardFactory emissionStandardFactory,
+                         List<EngineSpecificationsParser> parsers) {
         this.emissionStandardFactory = emissionStandardFactory;
         this.parsers = parsers;
         this.enginesByType = new HashMap<>();
@@ -40,9 +40,9 @@ public class EngineFactory {
     }
 
     /**
-     * @param properties - The properties the required engine must meet
+     * @param properties The properties the required engine must meet
      * @return Engine object meeting the properties required
-     * @throws IllegalArgumentException if such an Engine is unsupported
+     * @throws UnsupportedEngineException if such an Engine is unsupported
      */
     public Engine getEngine(String properties) {
         String[] splitProperties = properties.split("-");
@@ -79,7 +79,7 @@ public class EngineFactory {
             }
         }
 
-        throw new IllegalArgumentException("Engine with these properties is unsupported");
+        throw new UnsupportedEngineException();
     }
 
 }

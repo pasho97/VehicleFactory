@@ -1,8 +1,5 @@
-package com.company.components.engine.model;
+package com.company.components.model;
 
-import com.company.components.model.BodyType;
-import com.company.components.model.CarModel;
-import com.company.components.model.VehicleModel;
 import org.junit.Assert;
 import org.junit.Test;
 

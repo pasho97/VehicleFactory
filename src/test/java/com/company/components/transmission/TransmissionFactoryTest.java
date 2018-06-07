@@ -6,13 +6,13 @@ import org.junit.Test;
 import java.util.Arrays;
 
 public class TransmissionFactoryTest {
-    private static final TransmissionFactory factory=new TransmissionFactory(Arrays.asList(
+    private static final TransmissionFactory transmissionFactory =new TransmissionFactory(Arrays.asList(
             new Transmission(4,TransmissionType.MANUAL),new Transmission(4,TransmissionType.AUTOMATIC),
             new Transmission(6,TransmissionType.MANUAL),new Transmission(6,TransmissionType.AUTOMATIC)));
 
     @Test
     public void testGetAutoDefaultReturnsLowestSupportedGear(){
-        Assert.assertEquals("Auto-4",factory.getTransmission("Auto").getInfo());
+        Assert.assertEquals("Auto-4", transmissionFactory.getTransmission("Auto").getInfo());
     }
 
     @Test
@@ -24,10 +24,10 @@ public class TransmissionFactoryTest {
 
     @Test
     public  void testGetDefault(){
-        Assert.assertEquals("Man-4",factory.getTransmission(null).getInfo());
+        Assert.assertEquals("Man-4", transmissionFactory.getTransmission(null).getInfo());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = UnsupportedTransmissionException.class)
     public void testGetDefaultAutoWhenAutomaticTransmissionsNotSupported(){
         TransmissionFactory factory1=new TransmissionFactory(Arrays.asList(
                 new Transmission(4,TransmissionType.MANUAL),new Transmission(5,TransmissionType.MANUAL)));
@@ -35,7 +35,7 @@ public class TransmissionFactoryTest {
         Assert.fail();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = UnsupportedTransmissionException.class)
     public void testGetDefaultAutoWhenManualTransmissionsNotSupported(){
         TransmissionFactory factory1=new TransmissionFactory(Arrays.asList(
                 new Transmission(4,TransmissionType.AUTOMATIC),new Transmission(5,TransmissionType.AUTOMATIC)));
@@ -43,9 +43,9 @@ public class TransmissionFactoryTest {
         Assert.fail();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = UnsupportedTransmissionException.class)
     public void testSpecificTransmissionNotSupportedThrowsException(){
-        factory.getTransmission("Auto-8");
+        transmissionFactory.getTransmission("Auto-8");
         Assert.fail();
     }
 }

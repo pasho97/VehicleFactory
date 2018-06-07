@@ -1,13 +1,8 @@
-package com.company.components.engine.model;
+package com.company.components.model;
 
-import com.company.components.model.BodyType;
-import com.company.components.model.CarModel;
-import com.company.components.model.ModelFactory;
-import com.company.components.model.SuvModel;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -51,7 +46,7 @@ public class ModelFactoryTest {
         Assert.assertEquals("A4-combi",factory1.getModel("A4").getModel());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = UnsupportedVehicleModelException.class)
     public void testThrowsExceptionWhenNoSuchModelIsSupported(){
         factory.getModel("A3");
     }

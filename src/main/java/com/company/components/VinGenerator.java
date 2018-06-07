@@ -16,21 +16,20 @@ public class VinGenerator {
     private final Random random;
 
     /**
-     * @param alphabet - String containing the symbols the VIN can have
+     * @param alphabet   String containing the symbols the VIN can have
      */
     @Autowired
     public VinGenerator(String alphabet) {
-
         this.alphabet = Arrays.stream(alphabet.split("")).distinct().collect(Collectors.joining()).toCharArray();
         random = new Random();
     }
 
     /**
-     * @param countryISOCode - ISO code of the country , should be 2 symbols long
-     * @param factoryNumber - number of the factory , should be between 0 and 9
-     * @return - 17 characters VIN , first 2 characters are the countryISOCode , 3rd character is the factoryNumber,
+     * @param countryISOCode ISO code of the country , should be 2 symbols long
+     * @param factoryNumber number of the factory , should be between 0 and 9
+     * @return 17 characters VIN , first 2 characters are the countryISOCode , 3rd character is the factoryNumber,
      * the 14 others are random
-     * @throws IllegalArgumentException - if countyISOCode or factoryNumber is invalid
+     * @throws IllegalArgumentException if countyISOCode or factoryNumber is invalid
      */
     public String generate(String countryISOCode, int factoryNumber) {
         if (countryISOCode.length() != 2) {

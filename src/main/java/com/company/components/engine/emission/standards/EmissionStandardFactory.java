@@ -18,7 +18,7 @@ public class EmissionStandardFactory {
     }
 
     /**
-     * @param emissionStandardName - the name of the requested emission standard
+     * @param emissionStandardName the name of the requested emission standard
      * @return emission standard with the same name if one exists , if emissionStandardName is empty string a default
      * emission standard is returned
      * @throws IllegalArgumentException if emission standard with the given name is unsupported
@@ -38,7 +38,7 @@ public class EmissionStandardFactory {
             }
         }
 
-        throw new IllegalArgumentException("Emission standard is not supported");
+        throw new UnsupportedEmissionStandardException();
     }
 
     public EmissionStandard getHighestStandard() {

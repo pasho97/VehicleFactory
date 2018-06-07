@@ -26,7 +26,7 @@ public class ModelFactory {
     /**
      * @param modelString String representing a {@link VehicleModel} instance
      * @return VehicleModel instance representing the requested {@code #modelString}
-     * @throws IllegalArgumentException if such a model is not found
+     * @throws UnsupportedVehicleModelException if such a model is not found
      */
     public VehicleModel getModel(String modelString) {
         if (models.containsKey(modelString)) {
@@ -40,6 +40,6 @@ public class ModelFactory {
             }
         }
 
-        throw new IllegalArgumentException("required model is unsupported");
+        throw new UnsupportedVehicleModelException();
     }
 }
