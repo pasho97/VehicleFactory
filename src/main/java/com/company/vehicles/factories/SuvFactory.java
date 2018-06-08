@@ -1,6 +1,5 @@
-package com.company.command.factories;
+package com.company.vehicles.factories;
 
-import com.company.components.VinGenerator;
 import com.company.components.engine.EngineFactory;
 import com.company.components.model.VehicleModel;
 import com.company.components.model.ModelFactory;

@@ -1,9 +1,9 @@
 package com.company.command;
 
 import com.company.VehiclePersistentStorage;
-import com.company.command.factories.CarFactory;
-import com.company.command.factories.SuvFactory;
-import com.company.command.factories.VehicleFactory;
+import com.company.vehicles.factories.CarFactory;
+import com.company.vehicles.factories.SuvFactory;
+import com.company.vehicles.factories.VehicleFactory;
 import com.company.components.VinGenerator;
 import com.company.components.engine.*;
 import com.company.components.engine.emission.standards.EmissionStandard;
@@ -137,6 +137,6 @@ public class CreateCommandTest {
 
     @Test
     public void testGetCommandName() {
-        Assert.assertEquals("disassemble", createCommand.getCommandName());
+        Assert.assertEquals("create", createCommand.getCommandName());
     }
 }

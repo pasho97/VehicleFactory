@@ -1,4 +1,4 @@
-package com.company.command.factories;
+package com.company.vehicles.factories;
 
 import com.company.vehicles.Vehicle;
 

@@ -1,14 +1,13 @@
 package com.company.command;
 
 import com.company.VehiclePersistentStorage;
-import com.company.command.factories.VehicleFactory;
+import com.company.vehicles.factories.VehicleFactory;
 import com.company.components.VinGenerator;
 import com.company.vehicles.Vehicle;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 /**

@@ -1,6 +1,7 @@
-package com.company.vehicles;
+package com.company.vehicles.factories;
 
-import com.company.command.factories.CarFactory;
+import com.company.vehicles.Vehicle;
+import com.company.vehicles.factories.CarFactory;
 import com.company.components.engine.*;
 import com.company.components.engine.emission.standards.EmissionStandard;
 import com.company.components.engine.emission.standards.EmissionStandardFactory;

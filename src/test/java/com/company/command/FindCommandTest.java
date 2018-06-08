@@ -11,7 +11,7 @@ public class FindCommandTest {
 
     @Test
     public void testGetCommandName() {
-        Assert.assertEquals("disassemble", findCommand.getCommandName());
+        Assert.assertEquals("find", findCommand.getCommandName());
     }
 
     @Test
