@@ -95,8 +95,7 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
 
     @Override
     public String getAllInfo() {
-        return "\n" + jdbcTemplate.queryForObject("SELECT * FROM " + VEHICLES_TABLE + ";", mapper) +
-                "\ndisassembled :\n" +
+        return jdbcTemplate.queryForObject("SELECT * FROM " + VEHICLES_TABLE + ";", mapper) + "\ndisassembled:\n" +
                 jdbcTemplate.queryForObject("SELECT * FROM " + DISASSEMBLED_TABLE + ";", mapper);
     }
 
