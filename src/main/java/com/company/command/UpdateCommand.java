@@ -11,17 +11,15 @@ import java.util.*;
 public class UpdateCommand implements Command {
     private final VehiclePersistentStorage storage;
     private final Map<String, UpdateHelper> updaterMap;
-    private final String delimiter;
+
     /**
-     * @param storage storage used to store vehicles
+     * @param storage       storage used to store vehicles
      * @param updateHelpers list of {@link UpdateHelper} implementations having logic for parsing and updating the vehicle
-     * @param delimiter used for splitting the input arguments
      */
-    public UpdateCommand(VehiclePersistentStorage storage, List<UpdateHelper> updateHelpers,String delimiter) {
+    public UpdateCommand(VehiclePersistentStorage storage, List<UpdateHelper> updateHelpers) {
         this.storage = storage;
         updaterMap = new HashMap<>();
         updateHelpers.forEach(x -> updaterMap.put(x.getType(), x));
-        this.delimiter=delimiter;
     }
 
     @Override
@@ -36,12 +34,12 @@ public class UpdateCommand implements Command {
     @Override
     public String interpret(String stringToInterpret) {
         String vin = stringToInterpret.split(" ")[0];
-        String args = stringToInterpret.split(" ",2)[1];
+        String args = stringToInterpret.split(" ", 2)[1];
 
         Map<String, String> argsByPropertyNameMap = new HashMap<>();
         Arrays.stream(args.split(" ")).forEach(x -> {
             String[] temp = x.split("=");
-            if(temp.length!=2){
+            if (temp.length != 2) {
                 throw new IllegalArgumentException("Illegal update arguments format");
             }
             argsByPropertyNameMap.put(temp[0], temp[1]);
@@ -53,7 +51,7 @@ public class UpdateCommand implements Command {
                 throw new UnsupportedOperationException("unsupported update operation");
             }
             updateParams.add(updaterMap.get(key).getUpdatedComponentString(storage.getColByVin(vin, key).split("-"),
-                    argsByPropertyNameMap.get(key),"-"));
+                    argsByPropertyNameMap.get(key), "-"));
         }
         String update = String.join(", ", updateParams);
         storage.updateByVin(vin, update);

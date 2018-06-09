@@ -14,11 +14,10 @@ public class UpdateCommandTest {
     private VehiclePersistentStorage storage=mock(VehiclePersistentStorage.class);
     private UpdateHelper updateHelper = mock(UpdateHelper.class);
     private Command updateCommand;
-    private static final String DELIMITER="-";
 
     @Test
     public void testGetCommandName(){
-        updateCommand=new UpdateCommand(storage,Collections.singletonList(updateHelper),DELIMITER);
+        updateCommand=new UpdateCommand(storage,Collections.singletonList(updateHelper));
         Assert.assertEquals("update",updateCommand.getCommandName());
     }
 
@@ -27,7 +26,7 @@ public class UpdateCommandTest {
         when(storage.getColByVin(anyString(),anyString())).thenReturn("");
         doThrow(new RuntimeException("updateByVinMethod called")).when(storage).updateByVin(anyString(),anyString());
         when(updateHelper.getType()).thenReturn("test");
-        updateCommand = new UpdateCommand(storage, Collections.singletonList(updateHelper),DELIMITER);
+        updateCommand = new UpdateCommand(storage, Collections.singletonList(updateHelper));
         try {
             updateCommand.interpret("dasdasdas test=-dasdasd");
             Assert.fail();
@@ -38,7 +37,7 @@ public class UpdateCommandTest {
 
     @Test
     public void testThrowsExceptionIfTheDesiredUpdateIsUnsupported(){
-        updateCommand = new UpdateCommand(storage, Collections.singletonList(updateHelper),DELIMITER);
+        updateCommand = new UpdateCommand(storage, Collections.singletonList(updateHelper));
         try {
             updateCommand.interpret("testVin testUpdateOperation=someArgs");
             Assert.fail();
@@ -48,7 +47,7 @@ public class UpdateCommandTest {
     }
     @Test
     public void testInvalidFormatThrowsExceptionIfTheDesiredUpdateIsUnsupported(){
-        updateCommand = new UpdateCommand(storage, Collections.singletonList(updateHelper),DELIMITER);
+        updateCommand = new UpdateCommand(storage, Collections.singletonList(updateHelper));
         try {
             updateCommand.interpret("testVin testUpdateOperationsomeArgs");
             Assert.fail();
