@@ -1,5 +1,6 @@
 package com.company.components.engine.parsers;
 
+import com.company.components.engine.EngineParseException;
 import com.company.components.engine.EngineSpecifications;
 
 import java.util.List;

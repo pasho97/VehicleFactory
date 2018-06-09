@@ -72,7 +72,7 @@ public class CarFactory implements VehicleFactory {
                 throw new IllegalArgumentException("Electrical engines can't have transmissions");
             }
 
-            return new ElectricVehicle(engine, model, vin);
+            return createInstance(engine,model,vin);
         }
         Transmission transmission;
 
@@ -82,9 +82,15 @@ public class CarFactory implements VehicleFactory {
             transmission = transmissionFactory.getTransmission(propertiesMap.get("transmission"));
         }
 
-        return new Car(engine, model, transmission, vin);
+        return createInstance(engine,model,transmission,vin);
+    }
+    Vehicle createInstance(Engine engine, VehicleModel model, Transmission transmission, String vin){
+        return new Car(engine,model,transmission,vin);
     }
 
+    Vehicle createInstance(Engine engine, VehicleModel model, String  vin){
+        return new ElectricVehicle(engine, model, vin);
+    }
     @Override
     public String getType() {
         return "car";

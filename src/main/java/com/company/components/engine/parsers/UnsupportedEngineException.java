@@ -1,4 +1,4 @@
-package com.company.components.engine;
+package com.company.components.engine.parsers;
 
 public class UnsupportedEngineException extends RuntimeException {
     UnsupportedEngineException(){

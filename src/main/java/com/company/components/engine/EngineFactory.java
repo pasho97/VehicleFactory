@@ -3,6 +3,7 @@ package com.company.components.engine;
 import com.company.components.engine.emission.standards.EmissionStandard;
 import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.parsers.EngineSpecificationsParser;
+import com.company.components.engine.parsers.UnsupportedEngineException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -76,7 +77,7 @@ public class EngineFactory {
             }
         }
 
-        throw new UnsupportedEngineException();
+        throw new EngineParseException();
     }
 
 }

@@ -26,7 +26,7 @@ public class UpdateCommand implements Command {
 
     @Override
     public String getCommandName() {
-        return "getUpdatedComponentString";
+        return "update";
     }
 
     /**
@@ -42,7 +42,7 @@ public class UpdateCommand implements Command {
         Arrays.stream(args.split(" ")).forEach(x -> {
             String[] temp = x.split("=");
             if(temp.length!=2){
-                throw new IllegalArgumentException("Illegal getUpdatedComponentString arguments format");
+                throw new IllegalArgumentException("Illegal update arguments format");
             }
             argsByPropertyNameMap.put(temp[0], temp[1]);
         });
@@ -50,7 +50,7 @@ public class UpdateCommand implements Command {
         for (String key : argsByPropertyNameMap.keySet()
                 ) {
             if (!updaterMap.containsKey(key)) {
-                throw new UnsupportedOperationException("unsupported getUpdatedComponentString operation");
+                throw new UnsupportedOperationException("unsupported update operation");
             }
             updateParams.add(updaterMap.get(key).getUpdatedComponentString(storage.getColByVin(vin, key).split("-"),
                     argsByPropertyNameMap.get(key),"-"));

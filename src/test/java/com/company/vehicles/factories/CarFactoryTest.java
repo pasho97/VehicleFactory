@@ -1,13 +1,13 @@
 package com.company.vehicles.factories;
 
+import com.company.components.engine.parsers.UnsupportedEngineException;
 import com.company.vehicles.Vehicle;
-import com.company.vehicles.factories.CarFactory;
 import com.company.components.engine.*;
 import com.company.components.engine.emission.standards.EmissionStandard;
 import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.emission.standards.EuroEmissionStandard;
 import com.company.components.engine.parsers.DisplacementEngineSpecificationsParser;
-import com.company.components.engine.parsers.EngineParseException;
+import com.company.components.engine.EngineParseException;
 import com.company.components.engine.parsers.EngineTypeEngineSpecificationsParser;
 import com.company.components.engine.parsers.HorsepowerEngineSpecificationsParser;
 import com.company.components.engine.turbo.BasicTurbo;
@@ -127,14 +127,9 @@ public class CarFactoryTest {
         }
     }
 
-    @Test
+    @Test(expected = UnsupportedEngineException.class)
     public void testCreateCarUnsupportedEngine(){
-        try {
             Vehicle car=factory.create("engine=B-9hp-euro4 model=A4 transmission=Auto-4","BG042GRAU5WE3PAS5");
             Assert.fail();
-        }
-        catch (EngineParseException ex){
-            Assert.assertEquals("Cannot find Engine specifications with the required values",ex.getMessage());
-        }
     }
 }

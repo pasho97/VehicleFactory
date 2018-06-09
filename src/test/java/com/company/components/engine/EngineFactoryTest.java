@@ -4,9 +4,9 @@ import com.company.components.engine.emission.standards.EmissionStandard;
 import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.emission.standards.EuroEmissionStandard;
 import com.company.components.engine.parsers.DisplacementEngineSpecificationsParser;
-import com.company.components.engine.parsers.EngineParseException;
 import com.company.components.engine.parsers.EngineTypeEngineSpecificationsParser;
 import com.company.components.engine.parsers.HorsepowerEngineSpecificationsParser;
+import com.company.components.engine.parsers.UnsupportedEngineException;
 import com.company.components.engine.turbo.BasicTurbo;
 import org.junit.Assert;
 import org.junit.Before;
@@ -68,8 +68,8 @@ public class EngineFactoryTest {
     }
 
     @Test(expected = EngineParseException.class)
-    public void testUnsupportedPetrolEngineThrowsException() {
-        Engine engine = factory.getEngine("B-34hpT");
+    public void testUnsupportedArgsTypeThrowsException() {
+        Engine engine = factory.getEngine("B-34kwT");
         Assert.fail();
     }
 
@@ -112,5 +112,10 @@ public class EngineFactoryTest {
     @Test
     public void testGetElectricalEngineHighestEmissionStandard() {
         Assert.assertEquals("euro6", factory.getEngine("E").getEmissionStandard());
+    }
+
+    @Test(expected = UnsupportedEngineException.class)
+    public void testUnsupportedEngineThrowsUnsupportedEngineException(){
+        factory.getEngine("B-131hp");
     }
 }

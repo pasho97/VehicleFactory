@@ -18,9 +18,9 @@ public class EngineUpdateHelper implements UpdateHelper {
 
     @Override
     public String getUpdatedComponentString(String[] currentEngineArgs, String inputArgs,String delimiter) {
-        String[] engineArgs=inputArgs.split(delimiter);
+        String[] engineArgs=inputArgs.split(delimiter,-1);
         if (!(engineArgs.length == 3)) {
-            throw new IllegalArgumentException("Illegal engine getUpdatedComponentString argument");
+            throw new IllegalArgumentException("Illegal engine update arguments");
         }
         if (!engineArgs[2].equals("")) {
             currentEngineArgs[2] = engineArgs[2];

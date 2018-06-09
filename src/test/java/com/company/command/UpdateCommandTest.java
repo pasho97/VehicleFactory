@@ -19,7 +19,7 @@ public class UpdateCommandTest {
     @Test
     public void testGetCommandName(){
         updateCommand=new UpdateCommand(storage,Collections.singletonList(updateHelper),DELIMITER);
-        Assert.assertEquals("getUpdatedComponentString",updateCommand.getCommandName());
+        Assert.assertEquals("update",updateCommand.getCommandName());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class UpdateCommandTest {
             updateCommand.interpret("testVin testUpdateOperation=someArgs");
             Assert.fail();
         }catch (UnsupportedOperationException e){
-            Assert.assertEquals("unsupported getUpdatedComponentString operation",e.getMessage());
+            Assert.assertEquals("unsupported update operation",e.getMessage());
         }
     }
     @Test
@@ -53,7 +53,7 @@ public class UpdateCommandTest {
             updateCommand.interpret("testVin testUpdateOperationsomeArgs");
             Assert.fail();
         }catch (IllegalArgumentException e){
-            Assert.assertEquals("Illegal getUpdatedComponentString arguments format",e.getMessage());
+            Assert.assertEquals("Illegal update arguments format",e.getMessage());
         }
     }
 }

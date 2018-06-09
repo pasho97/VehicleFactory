@@ -82,8 +82,7 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
         try {
             return getInfo("VIN", vin);
         } catch (EmptyResultDataAccessException empty) {
-
-            return null;
+            throw new IllegalArgumentException("Vehicle with the given VIN does not exist",empty);
         }
     }
 
@@ -105,7 +104,7 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
         try {
             return jdbcTemplate.queryForObject(sql, String.class, vin);
         } catch (EmptyResultDataAccessException exception) {
-            throw new IllegalArgumentException("vehicle with the given vin does not exist", exception);
+            throw new IllegalArgumentException("Vehicle with the given vin does not exist", exception);
         }
     }
 

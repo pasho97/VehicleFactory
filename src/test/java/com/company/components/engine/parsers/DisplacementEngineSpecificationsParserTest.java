@@ -1,6 +1,7 @@
 package com.company.components.engine.parsers;
 
 import com.company.components.engine.DieselEngineSpecifications;
+import com.company.components.engine.EngineParseException;
 import com.company.components.engine.EngineSpecifications;
 import com.company.components.engine.PetrolEngineSpecifications;
 import org.junit.Assert;
@@ -54,7 +55,7 @@ public class DisplacementEngineSpecificationsParserTest {
         Assert.assertEquals(specs.getTurboId(), parser.parse("B-2L", Collections.singletonList(specs)).getTurboId());
     }
 
-    @Test(expected = EngineParseException.class)
+    @Test(expected = UnsupportedEngineException.class)
     public void testParseDoesNotGetSpecsWithoutTurboWhenTurboIsExplicitlyRequired() {
         EngineSpecifications specs = new PetrolEngineSpecifications(2000, 100);
         parser.parse("B-2LT-euro5", Collections.singletonList(specs));

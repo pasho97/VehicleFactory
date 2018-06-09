@@ -15,7 +15,7 @@ public interface UpdateHelper {
     String getUpdatedComponentString(String[] currentArgs, String newArgs,String delimiter);
 
     /**
-     * @return String representing the component the current class can be used to getUpdatedComponentString
+     * @return String representing the component the current class can be used to update
      */
     String getType();
 }
