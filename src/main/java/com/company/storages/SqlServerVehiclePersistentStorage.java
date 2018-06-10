@@ -1,11 +1,10 @@
-package com.company;
+package com.company.storages;
 
 import com.company.vehicles.Vehicle;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
-import javax.sql.DataSource;
 import java.util.Arrays;
 
 /**
@@ -14,9 +13,10 @@ import java.util.Arrays;
 public class SqlServerVehiclePersistentStorage implements VehiclePersistentStorage {
     private static final String DISASSEMBLED_TABLE = "disassembledVehicles";
     private static final String VEHICLES_TABLE = "vehicles";
-    private static final RowMapper<String> mapper = (resultSet, i) -> {
+    private static final ResultSetExtractor<String> mapper = (ResultSetExtractor<String>) resultSet -> {
         StringBuilder builder = new StringBuilder();
-        do {
+        while (resultSet.next()) {
+
             String vin = resultSet.getString("VIN");
             String model = resultSet.getString("model");
             String engine = resultSet.getString("engine");
@@ -28,18 +28,20 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
                 builder.append("\n");
             }
 
-        } while (resultSet.next());
+        }
+
         return builder.toString();
     };
     private JdbcTemplate jdbcTemplate;
 
+
     /**
      * This constructor also creates the needed tables if they do not exist already
      *
-     * @param dataSource dataSource used for connecting to the database
+     * @param template Spring JdbcTemplate instance already configured for the chosen database
      */
-    SqlServerVehiclePersistentStorage(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate(dataSource);
+    public SqlServerVehiclePersistentStorage(JdbcTemplate template) {
+        jdbcTemplate = template;
         String createTableForVehicles = "IF NOT EXISTS (SELECT * " +
                 "               FROM INFORMATION_SCHEMA.TABLES " +
                 "                 WHERE TABLE_NAME = '%s') " +
@@ -79,24 +81,25 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
 
     @Override
     public String getInfoByVin(String vin) {
-        try {
-            return getInfo("VIN", vin);
-        } catch (EmptyResultDataAccessException empty) {
-            throw new IllegalArgumentException("Vehicle with the given VIN does not exist", empty);
+        String result = getInfo("VIN", vin);
+        if (result.isEmpty()) {
+            throw new IllegalArgumentException("Vehicle with the given VIN does not exist");
         }
+
+        return result;
     }
 
     private String getInfo(String column, String value) {
         String sql = String.format("SELECT * FROM %s WHERE %s=? UNION SELECT * FROM %s WHERE %s=?;",
                 VEHICLES_TABLE, column, DISASSEMBLED_TABLE, column);
 
-        return jdbcTemplate.queryForObject(sql, mapper, value, value);
+        return jdbcTemplate.query(sql, mapper, value, value);
     }
 
     @Override
     public String getAllInfo() {
-        return jdbcTemplate.queryForObject("SELECT * FROM " + VEHICLES_TABLE + ";", mapper) + "\ndisassembled:\n" +
-                jdbcTemplate.queryForObject("SELECT * FROM " + DISASSEMBLED_TABLE + ";", mapper);
+        return jdbcTemplate.query("SELECT * FROM " + VEHICLES_TABLE + ";", mapper) + "\ndisassembled:\n" +
+                jdbcTemplate.query("SELECT * FROM " + DISASSEMBLED_TABLE + ";", mapper);
     }
 
     @Override
@@ -131,11 +134,7 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
     @Override
     public String getByEmissionStandard(String standard) {
         String sql = String.format("SELECT * FROM %s WHERE %s LIKE ?;", VEHICLES_TABLE, "engine");
-        try {
-            return jdbcTemplate.queryForObject(sql, mapper, "%-" + standard + "%");
-        } catch (EmptyResultDataAccessException exception) {
-            throw new IllegalArgumentException("No vehicles found with the required emission standard", exception);
-        }
+        return jdbcTemplate.query(sql, mapper, "%-" + standard + "%");
 
     }
 }

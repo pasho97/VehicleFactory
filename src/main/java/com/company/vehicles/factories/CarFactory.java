@@ -23,8 +23,8 @@ public class CarFactory implements VehicleFactory {
     private TransmissionFactory transmissionFactory;
 
     /**
-     * @param engineFactory engine factory used for getting the right {@link Engine} instance
-     * @param modelFactory model factory used for getting the right{@link VehicleModel} instance
+     * @param engineFactory       engine factory used for getting the right {@link Engine} instance
+     * @param modelFactory        model factory used for getting the right{@link VehicleModel} instance
      * @param transmissionFactory transmission factory used for getting the right {@link Transmission} instance
      */
     public CarFactory(EngineFactory engineFactory, ModelFactory modelFactory, TransmissionFactory transmissionFactory) {
@@ -72,7 +72,7 @@ public class CarFactory implements VehicleFactory {
                 throw new IllegalArgumentException("Electrical engines can't have transmissions");
             }
 
-            return createInstance(engine,model,vin);
+            return createInstance(engine, model, vin);
         }
         Transmission transmission;
 
@@ -82,15 +82,17 @@ public class CarFactory implements VehicleFactory {
             transmission = transmissionFactory.getTransmission(propertiesMap.get("transmission"));
         }
 
-        return createInstance(engine,model,transmission,vin);
-    }
-    Vehicle createInstance(Engine engine, VehicleModel model, Transmission transmission, String vin){
-        return new Car(engine,model,transmission,vin);
+        return createInstance(engine, model, transmission, vin);
     }
 
-    Vehicle createInstance(Engine engine, VehicleModel model, String  vin){
+    Vehicle createInstance(Engine engine, VehicleModel model, Transmission transmission, String vin) {
+        return new Car(engine, model, transmission, vin);
+    }
+
+    private Vehicle createInstance(Engine engine, VehicleModel model, String vin) {
         return new ElectricVehicle(engine, model, vin);
     }
+
     @Override
     public String getType() {
         return "car";

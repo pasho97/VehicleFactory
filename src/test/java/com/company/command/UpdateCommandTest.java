@@ -1,6 +1,6 @@
 package com.company.command;
 
-import com.company.VehiclePersistentStorage;
+import com.company.storages.VehiclePersistentStorage;
 import com.company.command.update.utils.UpdateHelper;
 import org.junit.Assert;
 import org.junit.Test;

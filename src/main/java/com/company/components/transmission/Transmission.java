@@ -9,7 +9,7 @@ public class Transmission {
 
     /**
      * @param gears gears count of transmission
-     * @param type type of transmission
+     * @param type  type of transmission
      */
     public Transmission(int gears, TransmissionType type) {
         this.type = type;
@@ -17,7 +17,7 @@ public class Transmission {
     }
 
     /**
-     * @param first first transmission
+     * @param first  first transmission
      * @param second second transmission
      * @return 1 if first transmission is higher class than second , 0 if they are equal or -1 if second is higher class
      */
@@ -39,7 +39,7 @@ public class Transmission {
     /**
      * @return String representing the transmission type
      */
-    public String getType(){
+    public String getType() {
         return type.getId();
     }
 }

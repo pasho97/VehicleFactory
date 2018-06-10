@@ -10,8 +10,8 @@ public abstract class Vehicle {
 
     /**
      * @param engine the engine of the vehicle
-     * @param model the model of the vehicle
-     * @param vin the vin code of the vehicle
+     * @param model  the model of the vehicle
+     * @param vin    the vin code of the vehicle
      */
     public Vehicle(Engine engine, VehicleModel model, String vin) {
         this.engine = engine;

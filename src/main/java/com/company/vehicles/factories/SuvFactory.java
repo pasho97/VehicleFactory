@@ -2,8 +2,8 @@ package com.company.vehicles.factories;
 
 import com.company.components.engine.Engine;
 import com.company.components.engine.EngineFactory;
-import com.company.components.model.VehicleModel;
 import com.company.components.model.ModelFactory;
+import com.company.components.model.VehicleModel;
 import com.company.components.transmission.Transmission;
 import com.company.components.transmission.TransmissionFactory;
 import com.company.vehicles.SuvVehicle;
@@ -23,10 +23,12 @@ public class SuvFactory extends CarFactory {
     public String getType() {
         return "suv";
     }
+
     @Override
     Vehicle createInstance(Engine engine, VehicleModel model, Transmission transmission, String vin) {
-        return new SuvVehicle(engine,model,transmission,vin);
+        return new SuvVehicle(engine, model, transmission, vin);
     }
+
     @Override
     VehicleModel getModel(String modelInfo) {
         VehicleModel model = modelFactory.getModel(modelInfo);

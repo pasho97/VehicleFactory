@@ -16,7 +16,7 @@ public abstract class InternalCombustionEngineSpecifications extends EngineSpeci
     /**
      * @return True if the engine specification has turbo , false otherwise
      */
-    public boolean hasTurbo() {
+    private boolean hasTurbo() {
         return turbo != null;
     }
 
@@ -34,11 +34,10 @@ public abstract class InternalCombustionEngineSpecifications extends EngineSpeci
             if (!hasTurbo()) {
                 this.turbo = newTurbo;
                 kwPower += newTurbo.getPowerIncreaseIfMounted(kwPower);
-            }
-            else {
-                kwPower-=this.turbo.getPowerDecreaseIfDismounted(kwPower);
-                this.turbo=newTurbo;
-                kwPower+=newTurbo.getPowerIncreaseIfMounted(kwPower);
+            } else {
+                kwPower -= this.turbo.getPowerDecreaseIfDismounted(kwPower);
+                this.turbo = newTurbo;
+                kwPower += newTurbo.getPowerIncreaseIfMounted(kwPower);
             }
         }
     }

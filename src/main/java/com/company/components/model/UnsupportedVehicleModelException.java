@@ -1,7 +1,7 @@
 package com.company.components.model;
 
 public class UnsupportedVehicleModelException extends RuntimeException {
-    public UnsupportedVehicleModelException(){
+    public UnsupportedVehicleModelException() {
         super("Unsupported model");
     }
 }

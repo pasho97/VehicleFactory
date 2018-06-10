@@ -24,12 +24,12 @@ public class BasicTurbo implements Turbo {
 
     @Override
     public double getPowerIncreaseIfMounted(double kwPower) {
-        return  kwPower * PERCENTAGE_INCREASE;
+        return kwPower * PERCENTAGE_INCREASE;
     }
 
     @Override
     public double getPowerDecreaseIfDismounted(double kwPower) {
-        return  kwPower * PERCENTAGE_INCREASE / (PERCENTAGE_INCREASE + 1);
+        return kwPower * PERCENTAGE_INCREASE / (PERCENTAGE_INCREASE + 1);
     }
 
     @Override

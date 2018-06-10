@@ -1,4 +1,4 @@
-package com.company;
+package com.company.storages;
 
 import com.company.vehicles.Vehicle;
 
@@ -35,13 +35,13 @@ public interface VehiclePersistentStorage {
     String getByEmissionStandard(String standard);
 
     /**
-     * @param vin VIN of the vehicle to be updated
+     * @param vin    VIN of the vehicle to be updated
      * @param fields new fields to be set in the storage
      */
     void updateByVin(String vin, String fields);
 
     /**
-     * @param vin VIN of the vehicle
+     * @param vin     VIN of the vehicle
      * @param colName Name of the columd
      * @return The value in the column with the given name for the vehicle with the given vin
      */

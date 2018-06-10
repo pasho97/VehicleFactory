@@ -1,6 +1,6 @@
 package com.company.command;
 
-import com.company.VehiclePersistentStorage;
+import com.company.storages.VehiclePersistentStorage;
 import com.company.vehicles.factories.CarFactory;
 import com.company.vehicles.factories.SuvFactory;
 import com.company.vehicles.factories.VehicleFactory;

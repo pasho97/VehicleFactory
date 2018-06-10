@@ -1,7 +1,7 @@
 package com.company.components.model;
 
 /**
- *  Instances of this class represent suv models , suv models have name of model only
+ * Instances of this class represent suv models , suv models have name of model only
  */
 public class SuvModel implements VehicleModel {
     private String name;

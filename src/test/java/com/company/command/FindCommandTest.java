@@ -1,6 +1,6 @@
 package com.company.command;
 
-import com.company.VehiclePersistentStorage;
+import com.company.storages.VehiclePersistentStorage;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.mockito.Mockito.*;

@@ -13,10 +13,10 @@ public interface EngineSpecificationsParser {
     boolean canParse(String properties);
 
     /**
-     * @param properties                The properties to be parsed
-     * @param engineSpecificationsList  List with engine specifications
-     * @return  The result engine specifications if parse was successful , null if parser cannot parse these properties
-     * @throws EngineParseException  if no engine specifications matching the given properties were found
+     * @param properties               The properties to be parsed
+     * @param engineSpecificationsList List with engine specifications
+     * @return The result engine specifications if parse was successful , null if parser cannot parse these properties
+     * @throws EngineParseException if no engine specifications matching the given properties were found
      */
     EngineSpecifications parse(String properties, List<EngineSpecifications> engineSpecificationsList);
 }

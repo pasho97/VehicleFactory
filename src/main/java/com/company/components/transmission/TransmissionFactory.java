@@ -22,11 +22,11 @@ public class TransmissionFactory {
         }
 
         transmissionsById = new HashMap<>();
-        transmissions.forEach(x->{
-            transmissionsById.put(x.getInfo(),x);
-            if(!transmissionsById.containsKey(x.getType())||
-                    Transmission.compare(x,transmissionsById.get(x.getType()))==-1){
-                transmissionsById.put(x.getType(),x);
+        transmissions.forEach(x -> {
+            transmissionsById.put(x.getInfo(), x);
+            if (!transmissionsById.containsKey(x.getType()) ||
+                    Transmission.compare(x, transmissionsById.get(x.getType())) == -1) {
+                transmissionsById.put(x.getType(), x);
             }
         });
     }
@@ -39,9 +39,9 @@ public class TransmissionFactory {
      */
     public Transmission getTransmission(String transmissionString) {
         if (transmissionString == null) {
-            for (TransmissionType type:TransmissionType.values()
-                 ) {
-                if(transmissionsById.containsKey(type.getId())) {
+            for (TransmissionType type : TransmissionType.values()
+                    ) {
+                if (transmissionsById.containsKey(type.getId())) {
                     return transmissionsById.get(type.getId());
                 }
             }

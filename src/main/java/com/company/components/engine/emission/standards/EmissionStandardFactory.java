@@ -29,10 +29,10 @@ public class EmissionStandardFactory {
         }
         for (EmissionStandard standard : emissionStandardList
                 ) {
-                if (emissionStandardName.equals(standard.getName())) {
-                    return standard;
-                }
+            if (emissionStandardName.equals(standard.getName())) {
+                return standard;
             }
+        }
 
         throw new UnsupportedEmissionStandardException();
     }

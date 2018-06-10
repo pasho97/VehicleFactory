@@ -1,9 +1,9 @@
 package com.company.command;
 
-import com.company.VehiclePersistentStorage;
-import com.company.vehicles.factories.VehicleFactory;
 import com.company.components.VinGenerator;
+import com.company.storages.VehiclePersistentStorage;
 import com.company.vehicles.Vehicle;
+import com.company.vehicles.factories.VehicleFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -22,8 +22,8 @@ public class CreateCommand implements Command {
 
     /**
      * @param creatorList list of factories this command supports
-     * @param storage storage used to store vehicles
-     * @param generator vin generator
+     * @param storage     storage used to store vehicles
+     * @param generator   vin generator
      */
     public CreateCommand(List<VehicleFactory> creatorList, VehiclePersistentStorage storage, VinGenerator generator) {
 

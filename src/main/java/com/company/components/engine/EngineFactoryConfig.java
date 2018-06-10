@@ -51,9 +51,10 @@ public class EngineFactoryConfig {
     EngineSpecifications petrolEngine1() {
         return new PetrolEngineSpecifications(1000, 55);
     }
+
     @Bean
-    EngineSpecifications petrolEngine1T(){
-        return new PetrolEngineSpecifications(1000, 71 ,BasicTurbo.getInstance());
+    EngineSpecifications petrolEngine1T() {
+        return new PetrolEngineSpecifications(1000, 71, BasicTurbo.getInstance());
     }
 
     @Bean

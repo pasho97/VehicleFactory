@@ -12,10 +12,11 @@ public class SuvVehicle extends Car {
         super(engine, model, transmission, vin);
         validateModel(model);
     }
+
     @Override
-    public void validateModel(VehicleModel model){
-        if(!model.getVehicleType().equals("suv")){
-            throw new IllegalArgumentException(model.getModel()+" is not a valid suv model");
+    public void validateModel(VehicleModel model) {
+        if (!model.getVehicleType().equals("suv")) {
+            throw new IllegalArgumentException(model.getModel() + " is not a valid suv model");
         }
     }
 

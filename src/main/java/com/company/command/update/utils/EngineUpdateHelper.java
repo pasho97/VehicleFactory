@@ -17,8 +17,8 @@ public class EngineUpdateHelper implements UpdateHelper {
     }
 
     @Override
-    public String getUpdatedComponentString(String[] currentEngineArgs, String inputArgs,String delimiter) {
-        String[] engineArgs=inputArgs.split(delimiter,-1);
+    public String getUpdatedComponentString(String[] currentEngineArgs, String inputArgs, String delimiter) {
+        String[] engineArgs = inputArgs.split(delimiter, -1);
         if (!(engineArgs.length == 3)) {
             throw new IllegalArgumentException("Illegal engine update arguments");
         }
@@ -27,7 +27,7 @@ public class EngineUpdateHelper implements UpdateHelper {
         }
         Engine engine = engineFactory.getEngine(String.join("-", currentEngineArgs));
         if (engineArgs[1].equals("*T")) {
-                if (engine.getTurboId()==null) {
+            if (engine.getTurboId() == null) {
                 engine.mountTurbo(BasicTurbo.getInstance());
             }
         }

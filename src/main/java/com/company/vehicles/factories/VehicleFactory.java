@@ -8,7 +8,7 @@ import com.company.vehicles.Vehicle;
 public interface VehicleFactory {
     /**
      * @param properties vehicle properties
-     * @param vin vin for the vehicle
+     * @param vin        vin for the vehicle
      * @return Vehicle object if there are no errors
      * @throws IllegalArgumentException if any error occurs with the properties
      */

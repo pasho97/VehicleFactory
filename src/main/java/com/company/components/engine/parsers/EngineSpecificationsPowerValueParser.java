@@ -1,6 +1,5 @@
 package com.company.components.engine.parsers;
 
-import com.company.components.engine.EngineParseException;
 import com.company.components.engine.EngineSpecifications;
 
 import java.util.List;
@@ -37,8 +36,8 @@ public abstract class EngineSpecificationsPowerValueParser implements EngineSpec
     }
 
     /**
-     * @param specifications       The engine specifications we want to check if they comply to the requested specifications
-     * @param enginePowerProperty  The requested specifications as string
+     * @param specifications      The engine specifications we want to check if they comply to the requested specifications
+     * @param enginePowerProperty The requested specifications as string
      * @return True if specifications have the same power requested by enginePowerProperty
      */
     abstract boolean haveRequestedPower(EngineSpecifications specifications, String enginePowerProperty);

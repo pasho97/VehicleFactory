@@ -69,7 +69,7 @@ public class EngineFactory {
                     }
 
                     emissionStandard = emissionStandardFactory.getStandardInstance(splitProperties[2]);
-                } else if(!result.getTypeId().equals("E")){
+                } else if (!result.getTypeId().equals("E")) {
                     emissionStandard = emissionStandardFactory.getStandardInstance("");
                 }
 

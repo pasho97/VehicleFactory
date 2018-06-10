@@ -1,7 +1,7 @@
 package com.company.components.model;
 
 /**
- *  Body types in car models
+ * Body types in car models
  */
 public enum BodyType {
     SEDAN, HATCHBACK, COMBI;

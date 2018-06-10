@@ -15,8 +15,8 @@ public class TransmissionUpdateHelper implements UpdateHelper {
     }
 
     @Override
-    public String getUpdatedComponentString(String currentTransmissionArgs[], String inputArgs,String delimiter) {
-        String[] newTransmissionArgs=inputArgs.split(delimiter);
+    public String getUpdatedComponentString(String currentTransmissionArgs[], String inputArgs, String delimiter) {
+        String[] newTransmissionArgs = inputArgs.split(delimiter);
         if (newTransmissionArgs.length >= 3) {
             throw new IllegalArgumentException("Unsupported transmission update");
         }

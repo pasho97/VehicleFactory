@@ -1,8 +1,8 @@
 package com.company.command;
 
 
-import com.company.VehiclePersistentStorage;
 import com.company.command.update.utils.UpdateHelper;
+import com.company.storages.VehiclePersistentStorage;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -56,6 +56,6 @@ public class UpdateCommand implements Command {
         String update = String.join(", ", updateParams);
         storage.updateByVin(vin, update);
 
-        return "updated" + storage.getInfoByVin(vin);
+        return "updated: " + storage.getInfoByVin(vin);
     }
 }

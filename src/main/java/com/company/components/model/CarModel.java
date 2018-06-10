@@ -9,7 +9,7 @@ public class CarModel implements VehicleModel {
 
     /**
      * @param model String value representing the name of the model
-     * @param type BodyType enum representing the type of the car body
+     * @param type  BodyType enum representing the type of the car body
      */
     public CarModel(String model, BodyType type) {
         this.model = model;
