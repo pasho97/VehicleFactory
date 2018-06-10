@@ -28,7 +28,7 @@ public class FactoryTest {
     public void testFactoryReadFilesCallsTransactionsStorageFillMethod() throws IOException {
         factory=new Factory(line,transactionsStorage);
         FileInputStream fileInputStream=mock(FileInputStream.class);
-        factory.readFiles(fileInputStream);
+        factory.readFromFiles(fileInputStream);
         verify(transactionsStorage,times(1)).fillWork(fileInputStream);
     }
 

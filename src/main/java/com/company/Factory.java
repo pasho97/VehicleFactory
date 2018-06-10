@@ -65,7 +65,7 @@ public class Factory {
      * @param fileInputStreams File input streams containing commands to be interpreted
      * @throws IOException if an error with any of the file occurs
      */
-    public void readFiles(FileInputStream... fileInputStreams) throws IOException {
+    public void readFromFiles(FileInputStream... fileInputStreams) throws IOException {
         commandStorage.fillWork(fileInputStreams);
     }
 
