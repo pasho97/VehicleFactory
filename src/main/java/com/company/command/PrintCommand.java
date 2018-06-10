@@ -8,7 +8,7 @@ public class PrintCommand implements Command {
     private VehiclePersistentStorage storage;
 
     /**
-     * @param storage storage used to stora vehicles
+     * @param storage the storage where the vehicles are stored
      */
     PrintCommand(VehiclePersistentStorage storage) {
         this.storage = storage;

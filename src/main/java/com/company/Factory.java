@@ -69,6 +69,11 @@ public class Factory {
         commandStorage.fillWork(fileInputStreams);
     }
 
+    /**
+     * Starts waiting for and executing commands from InputStream if set before the execution of this method and
+     * starts executing the commands from files and the unprocessed commands that remained in the
+     * {@link TransactionalPersistentStorage} by parallel working assembly lines
+     */
     @Transactional
     public void start() throws InterruptedException {
         Queue<Thread> threadQueue = new LinkedList<>();

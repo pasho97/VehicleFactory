@@ -42,7 +42,7 @@ public interface VehiclePersistentStorage {
 
     /**
      * @param vin     VIN of the vehicle
-     * @param colName Name of the columd
+     * @param colName Name of the column
      * @return The value in the column with the given name for the vehicle with the given vin
      */
     String getColByVin(String vin, String colName);

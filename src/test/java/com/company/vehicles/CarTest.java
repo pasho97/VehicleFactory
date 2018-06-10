@@ -1,6 +1,5 @@
 package com.company.vehicles;
 
-import com.company.components.engine.Engine;
 import com.company.components.engine.EngineFactory;
 import com.company.components.engine.EngineFactoryBuilder;
 import com.company.components.engine.PetrolEngineSpecifications;
@@ -11,12 +10,10 @@ import com.company.components.model.BodyType;
 import com.company.components.model.CarModel;
 import com.company.components.model.SuvModel;
 import com.company.components.transmission.Transmission;
-import com.company.components.transmission.TransmissionFactory;
 import com.company.components.transmission.TransmissionType;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 public class CarTest {

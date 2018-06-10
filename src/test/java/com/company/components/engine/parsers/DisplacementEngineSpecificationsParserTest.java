@@ -1,7 +1,6 @@
 package com.company.components.engine.parsers;
 
 import com.company.components.engine.DieselEngineSpecifications;
-import com.company.components.engine.EngineParseException;
 import com.company.components.engine.EngineSpecifications;
 import com.company.components.engine.PetrolEngineSpecifications;
 import org.junit.Assert;

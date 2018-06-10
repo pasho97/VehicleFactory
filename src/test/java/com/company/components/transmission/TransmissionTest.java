@@ -1,6 +1,5 @@
 package com.company.components.transmission;
 
-import com.company.components.model.BodyType;
 import org.junit.Assert;
 import org.junit.Test;
 

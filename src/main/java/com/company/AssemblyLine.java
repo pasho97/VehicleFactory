@@ -38,6 +38,9 @@ public class AssemblyLine {
         this(interpreter, Logger.getLogger(AssemblyLine.class.getName()));
     }
 
+    /**
+     * @param newLogger The new logger to be used for logging
+     */
     public void setLogger(Logger newLogger) {
         LOGGER = newLogger;
     }
@@ -51,6 +54,9 @@ public class AssemblyLine {
         }
     }
 
+    /**
+     * @param stream Begins listening for commands on the given stream , the command 'exit' stops this method
+     */
     void workOnInputStream(InputStream stream) {
         Scanner scanner = new Scanner(stream);
         while (true) {
@@ -63,11 +69,15 @@ public class AssemblyLine {
         }
     }
 
-    void work(TransactionalPersistentStorage commandStorageForTransactions) throws InterruptedException {
-        if (commandStorageForTransactions.hasWork()) {
-            String[] idCommandArray = commandStorageForTransactions.getNextRow();
+    /**
+     * @param commandPersistentStorage the transaction persistent storage from which to take the top command and
+     *                                      execute it
+     */
+    void work(TransactionalPersistentStorage commandPersistentStorage) throws InterruptedException {
+        if (commandPersistentStorage.hasWork()) {
+            String[] idCommandArray = commandPersistentStorage.getNextRow();
             logInterpretResult(idCommandArray[1]);
-            commandStorageForTransactions.markProcessed(idCommandArray[0]);
+            commandPersistentStorage.markProcessed(idCommandArray[0]);
         }
     }
 }

@@ -5,7 +5,6 @@ import com.company.components.engine.EngineFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class EngineUpdateHelperTest {

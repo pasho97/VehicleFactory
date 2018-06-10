@@ -7,7 +7,6 @@ import com.company.components.engine.emission.standards.EmissionStandard;
 import com.company.components.engine.emission.standards.EmissionStandardFactory;
 import com.company.components.engine.emission.standards.EuroEmissionStandard;
 import com.company.components.engine.parsers.DisplacementEngineSpecificationsParser;
-import com.company.components.engine.EngineParseException;
 import com.company.components.engine.parsers.EngineTypeEngineSpecificationsParser;
 import com.company.components.engine.parsers.HorsepowerEngineSpecificationsParser;
 import com.company.components.engine.turbo.BasicTurbo;

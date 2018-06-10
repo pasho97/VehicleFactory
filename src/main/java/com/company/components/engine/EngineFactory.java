@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 /**
- * Class implementing Factory desing pattern for Engine objects
+ * Class implementing Factory design pattern for Engine objects
  */
 @Component
 public class EngineFactory {

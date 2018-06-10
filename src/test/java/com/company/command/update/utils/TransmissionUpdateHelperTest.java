@@ -5,9 +5,7 @@ import com.company.components.transmission.TransmissionFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
 
 public class TransmissionUpdateHelperTest {
     private TransmissionFactory factory=mock(TransmissionFactory.class);
