@@ -19,7 +19,6 @@ public class MyAspect {
     @AfterReturning("execution(* com.company.command.CreateCommand.interpret(..))")
     void createCommandDelay() {
         try {
-            System.out.println("waiting");
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();

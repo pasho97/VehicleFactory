@@ -38,7 +38,6 @@ public class CommandInterpreter {
         String command = input.split(" ")[0];
 
         if (!commandHashMap.containsKey(command)) {
-            System.out.println(command);
             throw new UnsupportedOperationException("Unsupported command");
         }
         String commandArgs = input.substring(command.length() + 1);
