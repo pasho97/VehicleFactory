@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Engine specifications parser used when only a type of engine is given
+ */
 @Component
 public class EngineTypeEngineSpecificationsParser implements EngineSpecificationsParser {
 

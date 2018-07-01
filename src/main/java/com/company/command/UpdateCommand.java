@@ -10,7 +10,7 @@ import java.util.*;
 @Component
 public class UpdateCommand implements Command {
     private final VehiclePersistentStorage storage;
-    private final Map<String, UpdateHelper> updaterMap;
+    private final Map<String, UpdateHelper> updaterByType;
 
     /**
      * @param storage       storage used to store vehicles
@@ -18,8 +18,8 @@ public class UpdateCommand implements Command {
      */
     public UpdateCommand(VehiclePersistentStorage storage, List<UpdateHelper> updateHelpers) {
         this.storage = storage;
-        updaterMap = new HashMap<>();
-        updateHelpers.forEach(x -> updaterMap.put(x.getType(), x));
+        updaterByType = new HashMap<>();
+        updateHelpers.forEach(x -> updaterByType.put(x.getType(), x));
     }
 
     @Override
@@ -36,22 +36,22 @@ public class UpdateCommand implements Command {
         String vin = stringToInterpret.split(" ")[0];
         String args = stringToInterpret.split(" ", 2)[1];
 
-        Map<String, String> argsByPropertyNameMap = new HashMap<>();
+        Map<String, String> specsByPropertyName = new HashMap<>();
         Arrays.stream(args.split(" ")).forEach(x -> {
             String[] temp = x.split("=");
             if (temp.length != 2) {
                 throw new IllegalArgumentException("Illegal update arguments format");
             }
-            argsByPropertyNameMap.put(temp[0], temp[1]);
+            specsByPropertyName.put(temp[0], temp[1]);
         });
         List<String> updateParams = new ArrayList<>();
-        for (String key : argsByPropertyNameMap.keySet()
+        for (String key : specsByPropertyName.keySet()
                 ) {
-            if (!updaterMap.containsKey(key)) {
+            if (!updaterByType.containsKey(key)) {
                 throw new UnsupportedOperationException("unsupported update operation");
             }
-            updateParams.add(updaterMap.get(key).getUpdatedComponentString(storage.getColByVin(vin, key).split("-"),
-                    argsByPropertyNameMap.get(key), "-"));
+            updateParams.add(updaterByType.get(key).getUpdatedComponentString(storage.getColByVin(vin, key).split("-"),
+                    specsByPropertyName.get(key), "-"));
         }
         String update = String.join(", ", updateParams);
         storage.updateByVin(vin, update);

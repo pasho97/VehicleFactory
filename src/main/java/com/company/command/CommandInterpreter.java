@@ -12,17 +12,17 @@ import java.util.Map;
  */
 @Component
 public class CommandInterpreter {
-    private final Map<String, Command> commandHashMap;
+    private final Map<String, Command> commandByName;
 
     /**
      * @param commands The command the interpreter must support
      */
     @Autowired
     public CommandInterpreter(List<Command> commands) {
-        commandHashMap = new Hashtable<>();
+        commandByName = new Hashtable<>();
         for (Command command : commands
                 ) {
-            commandHashMap.put(command.getCommandName(), command);
+            commandByName.put(command.getCommandName(), command);
         }
     }
 
@@ -37,11 +37,11 @@ public class CommandInterpreter {
         input = input.trim();
         String command = input.split(" ")[0];
 
-        if (!commandHashMap.containsKey(command)) {
+        if (!commandByName.containsKey(command)) {
             throw new UnsupportedOperationException("Unsupported command");
         }
         String commandArgs = input.substring(command.length() + 1);
-        Command result = commandHashMap.get(command);
+        Command result = commandByName.get(command);
 
         return result.interpret(commandArgs);
     }

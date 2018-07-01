@@ -2,6 +2,9 @@ package com.company.components.engine;
 
 import com.company.components.engine.turbo.Turbo;
 
+/**
+ * Abstract class representing engine specifications for internal combustion engine specifications
+ */
 public abstract class InternalCombustionEngineSpecifications extends EngineSpecifications {
 
     private int displacement;

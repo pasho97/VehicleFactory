@@ -3,6 +3,9 @@ package com.company.components.engine.parsers;
 import com.company.components.engine.EngineSpecifications;
 
 
+/**
+ * Engine specifications parser for displacement type of input information
+ */
 public class DisplacementEngineSpecificationsParser extends EngineSpecificationsPowerValueParser {
 
     public DisplacementEngineSpecificationsParser(String id) {

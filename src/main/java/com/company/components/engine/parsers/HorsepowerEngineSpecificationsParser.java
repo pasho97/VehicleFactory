@@ -2,6 +2,9 @@ package com.company.components.engine.parsers;
 
 import com.company.components.engine.EngineSpecifications;
 
+/**
+ * Engine specifications parser for horsepower type of input information
+ */
 public class HorsepowerEngineSpecificationsParser extends EngineSpecificationsPowerValueParser {
     private final int allowedDifference;
 

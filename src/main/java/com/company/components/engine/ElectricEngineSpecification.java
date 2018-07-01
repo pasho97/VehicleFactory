@@ -3,7 +3,7 @@ package com.company.components.engine;
 import com.company.components.engine.turbo.Turbo;
 
 /**
- * This class represents electrical engine
+ * Class representing electric engine specifications
  */
 public class ElectricEngineSpecification extends EngineSpecifications {
     public ElectricEngineSpecification(int kw) {

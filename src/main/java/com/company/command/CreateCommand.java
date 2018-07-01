@@ -17,7 +17,7 @@ import java.util.Map;
 public class CreateCommand implements Command {
     private final VehiclePersistentStorage storage;
     private final VinGenerator generator;
-    private Map<String, VehicleFactory> creatorByTypeMap;
+    private Map<String, VehicleFactory> vehicleFactoryByType;
 
 
     /**
@@ -29,8 +29,8 @@ public class CreateCommand implements Command {
 
         this.storage = storage;
         this.generator = generator;
-        creatorByTypeMap = new HashMap<>();
-        creatorList.forEach(x -> creatorByTypeMap.put(x.getType(), x));
+        vehicleFactoryByType = new HashMap<>();
+        creatorList.forEach(x -> vehicleFactoryByType.put(x.getType(), x));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CreateCommand implements Command {
     @Override
     public String interpret(String stringToInterpret) {
         String[] arguments = stringToInterpret.split(" ");
-        if (!creatorByTypeMap.containsKey(arguments[0])) {
+        if (!vehicleFactoryByType.containsKey(arguments[0])) {
             throw new UnsupportedOperationException("unsupported vehicle type");
         }
         String vin = generator.generate();
@@ -49,7 +49,7 @@ public class CreateCommand implements Command {
             vin = generator.generate();
 
         }
-        Vehicle newVehicle = creatorByTypeMap.get(arguments[0])
+        Vehicle newVehicle = vehicleFactoryByType.get(arguments[0])
                 .create(stringToInterpret.replace(arguments[0] + " ", ""), vin);
 
 

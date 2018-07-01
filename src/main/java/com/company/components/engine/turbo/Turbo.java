@@ -6,8 +6,6 @@ package com.company.components.engine.turbo;
 public interface Turbo {
 
     /**
-     * Constructor
-     *
      * @param kwPower The current kilowatts power of the engine
      * @return The power increase an engine with the given kilowatts power and no turbo would get
      * if added this type of turbo

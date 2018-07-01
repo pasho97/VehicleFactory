@@ -25,7 +25,7 @@ public class EngineFactory {
      * @param parsers                  list of parsers having the different string input parser types the engine can be build from
      */
     @Autowired
-    public EngineFactory(List<EngineSpecifications> engineSpecificationsList, EmissionStandardFactory emissionStandardFactory,
+    EngineFactory(List<EngineSpecifications> engineSpecificationsList, EmissionStandardFactory emissionStandardFactory,
                          List<EngineSpecificationsParser> parsers) {
         this.emissionStandardFactory = emissionStandardFactory;
         this.parsers = parsers;
