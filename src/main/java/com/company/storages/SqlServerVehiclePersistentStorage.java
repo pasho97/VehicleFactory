@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class SqlServerVehiclePersistentStorage implements VehiclePersistentStorage {
     private static final String DISASSEMBLED_TABLE = "disassembledVehicles";
     private static final String VEHICLES_TABLE = "vehicles";
-    private static final ResultSetExtractor<String> mapper = (ResultSetExtractor<String>) resultSet -> {
+    private static final ResultSetExtractor<String> extractor = (ResultSetExtractor<String>) resultSet -> {
         StringBuilder builder = new StringBuilder();
         while (resultSet.next()) {
 
@@ -93,13 +93,13 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
         String sql = String.format("SELECT * FROM %s WHERE %s=? UNION SELECT * FROM %s WHERE %s=?;",
                 VEHICLES_TABLE, column, DISASSEMBLED_TABLE, column);
 
-        return jdbcTemplate.query(sql, mapper, value, value);
+        return jdbcTemplate.query(sql, extractor, value, value);
     }
 
     @Override
     public String getAllInfo() {
-        return jdbcTemplate.query("SELECT * FROM " + VEHICLES_TABLE + ";", mapper) + "\ndisassembled:\n" +
-                jdbcTemplate.query("SELECT * FROM " + DISASSEMBLED_TABLE + ";", mapper);
+        return jdbcTemplate.query("SELECT * FROM " + VEHICLES_TABLE + ";", extractor) + "\ndisassembled:\n" +
+                jdbcTemplate.query("SELECT * FROM " + DISASSEMBLED_TABLE + ";", extractor);
     }
 
     @Override
@@ -134,7 +134,7 @@ public class SqlServerVehiclePersistentStorage implements VehiclePersistentStora
     @Override
     public String getByEmissionStandard(String standard) {
         String sql = String.format("SELECT * FROM %s WHERE %s LIKE ?;", VEHICLES_TABLE, "engine");
-        return jdbcTemplate.query(sql, mapper, "%-" + standard + "%");
+        return jdbcTemplate.query(sql, extractor, "%-" + standard + "%");
 
     }
 }
